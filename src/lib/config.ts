@@ -3,7 +3,7 @@ export const SITE = {
   author: "Aldin",
   profile: "https://louai.site",
   desc: "My digital space, projects, insights, and thoughts on software engineering.",
-  title: "Louai Boumediene",
+  title: "Aldins Portfolio",
   ogImage: '/og-image.jpg',
   postPerPage: 6,
 } as const;

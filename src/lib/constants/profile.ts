@@ -1,5 +1,5 @@
 export const PROFILE_INFO = {
-  role: 'Software Engineer',
+  role: 'HTL Student',
   logo: 'Aldin.Isma',
   slogan: 'When I wrote this code, only God and I understood what I did. Now only God knows.',
   displayName: "Aldin Isma",
