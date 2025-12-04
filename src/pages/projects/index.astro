@@ -7,7 +7,6 @@ import BoxHeader from "@/components/box/header.astro";
 import BoxTitle from "@/components/box/title.astro";
 import ProjectItem from "@/components/sections/projects/project-item.astro";
 
-// Projekte direkt im Code
 const projects = [
   {
     id: "project1",
@@ -16,7 +15,6 @@ const projects = [
     sourceCode: "https://github.com/aldinisma/Graphen-in-Java",
     type: "side",
   },
-  
   {
     id: "project2",
     name: "Complex Numbers with WPF",
@@ -50,7 +48,7 @@ const sideProjects = projects.filter(p => p.type === "side");
 >
   <Pattern />
 
-  <!-- Core Projects -->
+  
   {coreProjects.map(project => (
     <Box>
       <BoxHeader>
@@ -60,7 +58,7 @@ const sideProjects = projects.filter(p => p.type === "side");
     </Box>
   ))}
 
-  <!-- Side Projects -->
+  
   {sideProjects.map(project => (
     <>
       <Pattern />
