@@ -2,9 +2,46 @@
 import ProjectLayout from "@/layouts/project-layout.astro";
 
 
+const projects = [
+  {
+    id: "project1",
+    name: "Projekt Eins",
+    description: "Beschreibung Projekt Eins",
+    sourceCode: "https://github.com/username/project1",
+    technologies: ["React", "TypeScript", "Tailwind"],
+  },
+  {
+    id: "project2",
+    name: "Projekt Zwei",
+    description: "Beschreibung Projekt Zwei",
+    sourceCode: "https://github.com/username/project2",
+    technologies: ["Vue", "JavaScript"],
+  },
+];
 
+export async function getStaticPaths() {
+  const projects = [
+    {
+      id: "project1",
+      name: "Projekt Eins",
+      description: "Beschreibung Projekt Eins",
+      sourceCode: "https://github.com/username/project1",
+      technologies: ["React", "TypeScript", "Tailwind"],
+    },
+    {
+      id: "project2",
+      name: "Projekt Zwei",
+      description: "Beschreibung Projekt Zwei",
+      sourceCode: "https://github.com/username/project2",
+      technologies: ["Vue", "JavaScript"],
+    },
+  ];
 
- 
+  return projects.map(project => ({
+    params: { projectId: project.id },
+    props: { project },
+  }));
+}
 
 const { project } = Astro.props;
 ---
