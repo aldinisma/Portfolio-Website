@@ -8,12 +8,14 @@ const projects = [
     name: "Projekt Eins",
     description: "Beschreibung Projekt Eins",
     sourceCode: "https://github.com/username/project1",
+    technologies: ["React", "TypeScript", "Tailwind"],
   },
   {
     id: "project2",
     name: "Projekt Zwei",
     description: "Beschreibung Projekt Zwei",
     sourceCode: "https://github.com/username/project2",
+    technologies: ["Vue", "JavaScript"],
   },
 ];
 
@@ -24,12 +26,14 @@ export async function getStaticPaths() {
       name: "Projekt Eins",
       description: "Beschreibung Projekt Eins",
       sourceCode: "https://github.com/username/project1",
+      technologies: ["React", "TypeScript", "Tailwind"],
     },
     {
       id: "project2",
       name: "Projekt Zwei",
       description: "Beschreibung Projekt Zwei",
       sourceCode: "https://github.com/username/project2",
+      technologies: ["Vue", "JavaScript"],
     },
   ];
 
@@ -42,7 +46,12 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 ---
 
-<ProjectLayout title={project.name}>
+<ProjectLayout 
+  title={project.name}
+  description={project.description}
+  technologies={project.technologies}
+  sourceCode={project.sourceCode}
+>
   <p>{project.description}</p>
   {project.sourceCode && (
     <p>
