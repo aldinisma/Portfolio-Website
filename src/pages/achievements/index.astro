@@ -6,7 +6,7 @@ import BoxTitle from "@/components/box/title.astro";
 import BoxHeader from "@/components/box/header.astro";
 import CertificateItem from "@/components/certificate-item.astro";
 
-// Deine Zertifikate - hier kannst du sie direkt definieren
+
 const certificates = [
    {
     id: "cert1",
@@ -46,7 +46,7 @@ const certificates = [
   },
 ];
 
-// Nach Datum sortieren (neueste zuerst)
+// Datum Sortieren
 const sortedCertificates = certificates.sort(
   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
 );
