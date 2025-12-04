@@ -1,35 +1,39 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+
 import ProjectLayout from "@/layouts/project-layout.astro";
-import { render } from "astro:content";
 
-export interface Props {
-  project: CollectionEntry<"projects">;
+// Projekte direkt im Code definieren
+const projects = [
+{
+id: "project1",
+name: "Projekt Eins",
+description: "Beschreibung Projekt Eins",
+sourceCode: "[https://github.com/username/project1](https://github.com/username/project1)",
+},
+{
+id: "project2",
+name: "Projekt Zwei",
+description: "Beschreibung Projekt Zwei",
+sourceCode: "[https://github.com/username/project2](https://github.com/username/project2)",
+},
+];
+
+const projectId = Astro.params.projectID;
+const project = projects.find(p => p.id === projectId);
+
+if (!project) {
+throw new Error(`Projekt mit ID '${projectId}' nicht gefunden`);
 }
+-
 
-export async function getStaticPaths() {
-  const projects = await getCollection("projects");
-
-  const project = projects.map(project => ({
-    params: { projectId: project.id },
-    props: { project },
-  }));
-
-  return project;
-}
-
-const { project } = Astro.props;
-
-const rendered = await render(project);
----
-
-<ProjectLayout
-  title={project.data.name}
-  technologies={project.data.technologies}
-  sourceCode={project.data.sourceCode}
-  preview={project.data.preview}
-  image={project.data.image}
-  description={project.data.description}
->
-  <rendered.Content />
+<ProjectLayout title={project.name}>
+  <p>{project.description}</p>
+  {project.sourceCode && (
+    <p>
+      Git Repository: 
+      <a href={project.sourceCode} target="_blank" rel="noopener noreferrer">
+        {project.sourceCode}
+      </a>
+    </p>
+  )}
 </ProjectLayout>

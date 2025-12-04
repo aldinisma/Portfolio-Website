@@ -1,0 +1,74 @@
+---
+import Layout from "@/layouts/page-layout.astro";
+import Pattern from "@/components/ui/pattern.astro";
+import Box from "@/components/box/index.astro";
+import BoxTitle from "@/components/box/title.astro";
+import BoxHeader from "@/components/box/header.astro";
+import CertificateItem from "@/components/certificate-item.astro";
+
+// Deine Zertifikate - hier kannst du sie direkt definieren
+const certificates = [
+   {
+    id: "cert1",
+    name: "Introduction to Cybersecurity Certificate",
+    issuer: "Cisco",
+    date: "2024-11-22",
+    image: "public/certificates/ITC.png",
+    category: "Cybersecurity",
+    credentialUrl: "https://www.credly.com/badges/70821c89-d34b-4422-9639-fdb94faf163b"
+  },
+  {
+    id: "cert2",
+    name: "Internet of Things Certificate",
+    issuer: "Cisco",
+    date: "2025-5-13",
+    image: "public/certificates/IOT.png",
+    category: "Cybersecurity",
+    credentialUrl: "https://www.credly.com/badges/1602a9d0-e2de-41cb-9429-62ba15764984"
+  },
+  {
+    id: "cert3",
+    name: "Online Retail Investigation Hack'game",
+    issuer: "European union agency for cybersecurity",
+    date: "2025-01-15",
+    image: "public/certificates/HackGame.png",
+    category: "Cybersecurity",
+    credentialUrl: "https://www.credly.com/badges/1602a9d0-e2de-41cb-9429-62ba15764984"
+  },
+  {
+    id: "cert4",
+    name: "SAP Basic-Tasks",
+    issuer: "bizConsult",
+    date: "2023-12-04",
+    image: "public/certificates/SAP.png",
+    category: "Business",
+    credentialUrl: "https://validation.bizconsult.at/val/exm?q=48338&p=aXWZwv9cQ-mRx3CrozP0keg8SmU1wYVNfW3LI-eZ3xA"
+  },
+];
+
+// Nach Datum sortieren (neueste zuerst)
+const sortedCertificates = certificates.sort(
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+);
+---
+
+<Layout
+  description="My professional certifications and achievements."
+  title="Achievements & Certificates"
+>
+  <Pattern />
+
+  <!-- All Certificates -->
+  <Box>
+    <BoxHeader>
+      <BoxTitle>Certificates</BoxTitle>
+    </BoxHeader>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+      {sortedCertificates.map(certificate => (
+        <CertificateItem certificate={certificate} />
+      ))}
+    </div>
+  </Box>
+
+  <Pattern />
+</Layout>

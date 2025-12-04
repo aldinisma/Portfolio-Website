@@ -1,12 +1,12 @@
 export const PROFILE_INFO = {
-  role: 'Software Engineer / Full-stack Developer',
-  logo: 'Louai.b',
-  slogan: 'Coding, Creativity, Coffee...',
-  displayName: "Louai Boumediene",
-  email: "boumedienelouai2@gmail.com",
+  role: 'Software Engineer',
+  logo: 'Aldin.Isma',
+  slogan: 'When I wrote this code, only God and I understood what I did. Now only God knows.',
+  displayName: "Aldin Isma",
+  email: "ismaaldin@gmail.com",
   about: `
-I'm a **software engineer** passionate about crafting high-quality digital experiences. With expertise in **full-stack** development and a strong eye for **UI/UX**, I build **performant, pixel-perfect** applications that are both functional and visually appealing.  
-Always **learning**, always **iterating**, always pushing boundaries.  
+I'm a final-year HTL computer science student with a passion for building clean, functional applications and working with network technology. I love diving into code, configuring networks, solving problems.
+When I'm not programming, you'll find me on the football pitch, watch boxing fights, or talking about cars. Always learning, always improving, always curious about what's next in tech.
 `,
 } as const;
 

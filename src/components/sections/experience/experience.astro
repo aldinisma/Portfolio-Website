@@ -4,19 +4,59 @@ import BoxHeader from "@/components/box/header.astro";
 import BoxTitle from "@/components/box/title.astro";
 import BoxContent from "@/components/box/content.astro";
 
-import { EXPERIENCES } from "@/lib/constants/experience";
+import { EXPERIENCES, EDUCATIONS } from "@/lib/constants/experience";
 import ExperienceItem from "./experience-item.astro";
 ---
-
+<!-- EXPERIENCE SECTION -->
 <Box>
   <BoxHeader>
     <BoxTitle> Experience </BoxTitle>
   </BoxHeader>
+
   <BoxContent className="px-0">
     {
-      EXPERIENCES.map(experience => {
-        return <ExperienceItem experience={experience} />;
-      })
+      EXPERIENCES.map(experience => (
+        <ExperienceItem experience={experience} />
+      ))
     }
+  </BoxContent>
+</Box>
+
+<!-- EDUCATION SECTION -->
+<Box class="mt-8">
+  <BoxHeader>
+    <BoxTitle> Education </BoxTitle>
+  </BoxHeader>
+
+  <BoxContent className="px-0">
+    <div class="space-y-6 p-4">
+
+      {
+        EDUCATIONS.map(edu => (
+          <div class="space-y-2 not-last:border-b pb-4">
+
+            <!-- Title row with icon -->
+            <div class="flex items-center space-x-4 px-2">
+              <span class="size-2 rounded-full background-white"></span>
+
+              <h3 class="text-xl font-black">
+                {edu.institution}
+              </h3>
+            </div>
+
+            <!-- Year timeline -->
+            <div
+              class="relative pl-1 before:absolute before:left-3 before:h-full before:w-px before:bg-border"
+            >
+              <p class="text-sm px-6">
+                {edu.year}
+              </p>
+            </div>
+
+          </div>
+        ))
+      }
+
+    </div>
   </BoxContent>
 </Box>

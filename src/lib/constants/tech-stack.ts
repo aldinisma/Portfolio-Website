@@ -1,22 +1,22 @@
 import {
-  BunJs,
   Docker,
   Figma,
-  Framer,
   Git,
   MongoDB,
-  NextJs,
   NodeJs,
   Python,
   React,
-  ReactQuery,
-  Redis,
-  Redux,
-  ShadcnUI,
-  TailwindCSS,
   TypeScript,
-  Appwrite,
-  Astro
+  C,
+  CSharp,
+  Java,
+  JavaScript,
+  Angular,
+  PostgreSQL,
+  MySQL,
+  Swagger,
+  HTML5,
+  CSS3,
 } from "developer-icons";
 
 import HonoIcon from '@/components/ui/icons/hono.astro'
@@ -26,14 +26,50 @@ import FastapiIcon from '@/components/ui/icons/fastapi.astro'
 export const TECH_STACK = [
   // Programming Languages
   {
+    title: "C",
+    href: "https://en.wikipedia.org/wiki/C_(programming_language)",
+    icon: C,
+  },
+  {
+    title: "C#",
+    href: "https://learn.microsoft.com/en-us/dotnet/csharp/",
+    icon: CSharp,
+  },
+  {
+    title: "Java",
+    href: "https://www.java.com/",
+    icon: Java,
+  },
+    {
+    title: "Python",
+    href: "https://www.python.org/",
+    icon: Python,
+  },
+  {
+    title: "HTML5",
+    href: "https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5",
+    icon: HTML5,
+  },
+  {    
+    title: "CSS3",
+    href: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+    icon: CSS3,
+  },
+  {
+    title: "JavaScript",
+    href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    icon: JavaScript,
+  },
+   {
     title: "TypeScript",
     href: "https://www.typescriptlang.org/",
     icon: TypeScript,
   },
   {
-    title: "Python",
-    href: "https://www.python.org/",
-    icon: Python,
+    title: "Angular",
+    href: "https://angular.io/",
+    icon: Angular,
+
   },
 
   // Frontend Technologies
@@ -42,46 +78,6 @@ export const TECH_STACK = [
     href: "https://react.dev/",
     icon: React,
   },
-  {
-    title: "Next.js",
-    href: "https://nextjs.org/",
-    icon: NextJs,
-  },
-  {
-    title: "Astro.js",
-    href: "https://astro.build/",
-    icon: Astro,
-  },
-  {
-    title: "Tailwind CSS",
-    href: "https://tailwindcss.com/",
-    icon: TailwindCSS,
-  },
-  {
-    title: "Redux",
-    href: "https://redux.js.org/",
-    icon: Redux,
-  },
-  {
-    title: "Zustand",
-    href: "https://zustand-demo.pmnd.rs/",
-  },
-  {
-    title: "React Query",
-    href: "https://tanstack.com/query/latest",
-    icon: ReactQuery,
-  },
-  {
-    title: "shadcn/ui",
-    href: "https://ui.shadcn.com/",
-    icon: ShadcnUI,
-  },
-  {
-    title: "Motion",
-    href: "https://motion.dev/",
-    icon: Framer,
-  },
-
 
   // Backend Technologies
   {
@@ -90,26 +86,15 @@ export const TECH_STACK = [
     icon: NodeJs,
   },
   {
-    title: "Bun",
-    href: "https://bun.sh/",
-    icon: BunJs,
-  },
-  {
     title: "FastAPI",
     href: "https://fastapi.tiangolo.com/",
     icon: FastapiIcon
   },
   {
-    title: "Honojs",
-    href: "https://hono.dev/",
-    icon: HonoIcon
+    title: "Swagger",
+    href: "https://swagger.io/",
+    icon: Swagger,
   },
-  {
-    title: "Appwrite",
-    href: "https://appwrite.io",
-    icon: Appwrite
-  },
-
   // Databases & Caching
   {
     title: "MongoDB",
@@ -117,10 +102,16 @@ export const TECH_STACK = [
     icon: MongoDB,
   },
   {
-    title: "Redis",
-    href: "https://redis.io/",
-    icon: Redis,
+    title: "PostgreSQL",
+    href: "https://www.postgresql.org/",
+    icon: PostgreSQL,
   },
+  {
+    title: "MySQL",
+    href: "https://www.mysql.com/",
+    icon: MySQL,
+  },
+  
 
   // DevOps & Development Tools
   {

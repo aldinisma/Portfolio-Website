@@ -1,0 +1,89 @@
+---
+import { AwardIcon, ExternalLinkIcon } from "lucide-react";
+
+interface Props {
+  certificate: {
+    id: string;
+    name: string;
+    issuer: string;
+    date: string;
+    image?: string;
+    pdfUrl?: string;
+    websiteUrl?: string;
+    credentialUrl?: string;
+  };
+}
+
+const { certificate } = Astro.props;
+
+// Datum formatieren
+const formattedDate = new Date(certificate.date).toLocaleDateString("de-DE", {
+  year: "numeric",
+  month: "long",
+});
+---
+
+<div class="flex flex-col border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+  <!-- Certificate Image/Preview -->
+  <div class="relative aspect-video bg-muted">
+    {certificate.image ? (
+      <img
+        src={certificate.image}
+        alt={certificate.name}
+        class="w-full h-full object-cover"
+        loading="lazy"
+      />
+    ) : certificate.pdfUrl ? (
+      <a
+        href={certificate.pdfUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full h-full flex items-center justify-center hover:bg-accent transition-colors"
+      >
+        <div class="text-center">
+          <svg class="size-16 mx-auto text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+          <p class="text-sm mt-2">PDF Certificate</p>
+        </div>
+      </a>
+    ) : certificate.websiteUrl ? (
+      <a
+        href={certificate.websiteUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full h-full flex items-center justify-center hover:bg-accent transition-colors"
+      >
+        <div class="text-center">
+          <ExternalLinkIcon class="size-16 mx-auto text-muted-foreground" />
+          <p class="text-sm mt-2">View Certificate Online</p>
+        </div>
+      </a>
+    ) : null}
+  </div>
+
+  <!-- Certificate Details -->
+  <div class="flex flex-col gap-2 p-4">
+    <div class="flex items-start gap-2">
+      <AwardIcon class="size-5 text-primary mt-0.5 flex-shrink-0" />
+      <div class="flex-1">
+        <h3 class="font-semibold text-lg leading-tight">{certificate.name}</h3>
+        <p class="text-sm text-muted-foreground">{certificate.issuer}</p>
+      </div>
+    </div>
+
+    <p class="text-sm text-muted-foreground">{formattedDate}</p>
+
+    {certificate.credentialUrl && (
+      <a
+        href={certificate.credentialUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-2 text-sm text-primary hover:underline mt-2"
+      >
+        <ExternalLinkIcon class="size-4" />
+        Verify Credential
+      </a>
+    )}
+  </div>
+</div>

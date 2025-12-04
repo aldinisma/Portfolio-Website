@@ -8,8 +8,8 @@ export const NAV_LINKS = [
     href: "/",
   },
   {
-    label: "Articles",
-    href: "/articles",
+    label: "Achievements",
+    href: "/achievements",
   },
   {
     label: "Projects",

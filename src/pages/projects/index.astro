@@ -5,39 +5,73 @@ import PageLayout from "@/layouts/page-layout.astro";
 import Box from "@/components/box/index.astro";
 import BoxHeader from "@/components/box/header.astro";
 import BoxTitle from "@/components/box/title.astro";
-import { getCollection } from "astro:content";
 import ProjectItem from "@/components/sections/projects/project-item.astro";
 
-const projects = await getCollection("projects");
+// Projekte direkt im Code
+const projects = [
+  {
+    id: "project1",
+    name: "Graphs in Java",
+    description: "A Graph beginner Project implemented with Java",
+    sourceCode: "https://github.com/aldinisma/Graphen-in-Java",
+    type: "side",
+  },
+  
+  {
+    id: "project2",
+    name: "Complex Numbers with WPF",
+    description: "A WPF-Project with Complex Numbers",
+    sourceCode: "https://github.com/aldinisma/ComplexNumbersWithWPF",
+    type: "side",
+  },
+  {
+     id: "project3",
+    name: "Binarytree visualized in JavaFX",
+    description: "A JavaFX Project with Binary trees",
+    sourceCode: "https://github.com/aldinisma/BinaryTree-in-Java-and-JavaFx",
+    type: "side",
+  },
+  {
+     id: "project4",
+    name: "Zahlenraten on Azure",
+    description: "A simple static Webapp deployed on Azure ",
+    sourceCode: "https://github.com/aldinisma/Zahlenraten-Azure-New-Attempt",
+    type: "side",
+  },
+];
 
-const coreProjects = projects.filter(project => project.data.type === "core");
-const sideProjects = projects.filter(project => project.data.type === "side");
+const coreProjects = projects.filter(p => p.type === "core");
+const sideProjects = projects.filter(p => p.type === "side");
 ---
 
 <PageLayout
-  description="A collection of things I’ve built, full-stack apps, experiments, and side projects."
+  description="A collection of Projects I made in school"
   title="My Projects"
 >
   <Pattern />
-  <Box>
-    <BoxHeader>
-      <BoxTitle> Built to Last </BoxTitle>
-    </BoxHeader>
 
-    {coreProjects.map(item => <ProjectItem project={item} />)}
-  </Box>
+  <!-- Core Projects -->
+  {coreProjects.map(project => (
+    <Box>
+      <BoxHeader>
+        <BoxTitle>{project.name}</BoxTitle>
+      </BoxHeader>
+      <ProjectItem project={project} />
+    </Box>
+  ))}
 
-  {
-    sideProjects.length > 0 && (
+  <!-- Side Projects -->
+  {sideProjects.map(project => (
+    <>
       <Pattern />
       <Box>
         <BoxHeader>
-          <BoxTitle>Side Hustles</BoxTitle>
+          <BoxTitle>{project.name}</BoxTitle>
         </BoxHeader>
-        {sideProjects.map(item => <ProjectItem project={item} />)}
+        <ProjectItem project={project} />
       </Box>
-    )
-  }
- 
+    </>
+  ))}
+
   <Pattern />
 </PageLayout>
