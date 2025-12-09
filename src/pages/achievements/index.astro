@@ -13,7 +13,7 @@ const certificates = [
     name: "Introduction to Cybersecurity Certificate",
     issuer: "Cisco",
     date: "2024-11-22",
-    image: "certificates/ITC.png",
+    image: "/certificates/ITC.png",
     category: "Cybersecurity",
     credentialUrl: "https://www.credly.com/badges/70821c89-d34b-4422-9639-fdb94faf163b"
   },
@@ -21,8 +21,8 @@ const certificates = [
     id: "cert2",
     name: "Internet of Things Certificate",
     issuer: "Cisco",
-    date: "2025-5-13",
-    image: "certificates/IOT.png",
+    date: "2025-05-13",
+    image: "/certificates/IOT.png",
     category: "Cybersecurity",
     credentialUrl: "https://www.credly.com/badges/1602a9d0-e2de-41cb-9429-62ba15764984"
   },
@@ -31,7 +31,7 @@ const certificates = [
     name: "Online Retail Investigation Hack'game",
     issuer: "European union agency for cybersecurity",
     date: "2025-01-15",
-    image: "certificates/HackGame.png",
+    image: "/certificates/HackGame.png",
     category: "Cybersecurity",
     credentialUrl: "https://www.credly.com/badges/1602a9d0-e2de-41cb-9429-62ba15764984"
   },
@@ -40,13 +40,13 @@ const certificates = [
     name: "SAP Basic-Tasks",
     issuer: "bizConsult",
     date: "2023-12-04",
-    image: "certificates/SAP.png",
+    image: "/certificates/SAP.png",
     category: "Business",
     credentialUrl: "https://validation.bizconsult.at/val/exm?q=48338&p=aXWZwv9cQ-mRx3CrozP0keg8SmU1wYVNfW3LI-eZ3xA"
   },
 ];
 
-// Datum Sortieren
+
 const sortedCertificates = certificates.sort(
   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
 );
@@ -58,7 +58,7 @@ const sortedCertificates = certificates.sort(
 >
   <Pattern />
 
-  <!-- All Certificates -->
+
   <Box>
     <BoxHeader>
       <BoxTitle>Certificates</BoxTitle>
