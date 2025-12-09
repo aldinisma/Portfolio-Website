@@ -4,95 +4,125 @@ import Box from "@/components/box/index.astro";
 import BoxContent from "@/components/box/content.astro";
 
 import { PROFILE_INFO } from "@/lib/constants/profile";
-import { Briefcase } from "lucide-react";
+import { Briefcase, Mail, Github } from "lucide-react";
 
 import VerifiedIcon from "@/components/ui/icons/verified.astro";
-import XIcon from "@/components/ui/icons/x.astro";
-import GithubIcon from "@/components/ui/icons/github.astro";
-import LinkedinIcon from "@/components/ui/icons/linkedin.astro";
 ---
 
-<div class="screen-line-after relative flex items-center p-4 md:border-x">
-  <div class="shrink-0">
-    <div class="relative z-1 mx-0.5 my-1">
-      <LouaiAvatar
-        className="size-20 rounded-full ring-1 ring-border ring-offset-2 ring-offset-background sm:size-28"
-      />
-    </div>
+<!-- Hero Section mit Gradient Background -->
+<div class="screen-line-after relative overflow-hidden p-6 md:border-x md:p-8">
+  <!-- Animated Gradient Background -->
+  <div class="absolute inset-0 -z-10 overflow-hidden">
+    <div class="absolute -top-1/2 -left-1/2 h-[200%] w-[200%] animate-gradient-slow bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 dark:from-blue-500/10 dark:via-purple-500/10 dark:to-pink-500/10"></div>
   </div>
 
-  <div class="flex flex-1 flex-col">
-    <div class="flex grow items-end pb-1 pl-4">
-      <div class="line-clamp-1 font-mono text-xs text-muted-foreground">
-        {PROFILE_INFO.slogan}
+  <div class="flex flex-col items-center gap-6 md:flex-row md:items-start">
+    <!-- Avatar with Animation -->
+    <div class="relative group">
+      <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 opacity-75 blur-lg transition-all duration-500 group-hover:opacity-100 group-hover:blur-xl"></div>
+      <div class="relative animate-fade-in-up">
+        <LouaiAvatar
+          className="size-32 rounded-full ring-2 ring-white/50 ring-offset-4 ring-offset-background sm:size-40 transition-transform duration-300 group-hover:scale-105"
+          priority={true}
+        />
       </div>
     </div>
 
-    <div class="">
-      <h1 class="flex items-center gap-x-2 pl-4 text-2xl font-black">
-        {PROFILE_INFO.displayName}
-        <VerifiedIcon class="size-4 text-blue-500" />
-      </h1>
+    <!-- Info Section -->
+    <div class="flex flex-1 flex-col gap-4 text-center md:text-left animate-fade-in-up animation-delay-200">
+      <!-- Name & Title -->
+      <div class="space-y-2">
+        <h1 class="flex items-center justify-center gap-2 text-3xl font-black md:justify-start md:text-4xl">
+          <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            {PROFILE_INFO.displayName}
+          </span>
+          <VerifiedIcon class="size-6 text-blue-500 animate-pulse" />
+        </h1>
+        
+        <div class="flex items-center justify-center gap-2 md:justify-start">
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-blue-500/10 px-3 py-1 text-sm font-semibold text-blue-600 dark:bg-blue-500/20 dark:text-blue-400">
+            <span class="relative flex h-2 w-2">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75"></span>
+              <span class="relative inline-flex h-2 w-2 rounded-full bg-blue-500"></span>
+            </span>
+            {PROFILE_INFO.role}
+          </span>
+        </div>
+      </div>
 
-      <div class="py-1 pl-4">
-        <p class="text-sm !font-normal">
-          {PROFILE_INFO.role}
-        </p>
+      <!-- Slogan -->
+      <p class="max-w-2xl font-mono text-sm text-muted-foreground italic leading-relaxed">
+        "{PROFILE_INFO.slogan}"
+      </p>
+
+      <!-- Quick Links with Icons -->
+      <div class="flex flex-wrap items-center justify-center gap-3 md:justify-start animate-fade-in-up animation-delay-400">
+        <a
+          href="https://www.htlsaalfelden.at/startseite"
+          target="_blank"
+          class="group flex items-center gap-2 rounded-lg border border-border bg-background/50 px-4 py-2 text-sm font-medium transition-all duration-200 hover:border-blue-500/50 hover:bg-blue-500/5 hover:shadow-lg hover:shadow-blue-500/10"
+        >
+          <Briefcase className="size-4 text-blue-600 transition-transform group-hover:scale-110" />
+          <span>HTL Saalfelden</span>
+        </a>
+
+        <a
+          href="mailto:ismaaldin@gmail.com"
+          class="group flex items-center gap-2 rounded-lg border border-border bg-background/50 px-4 py-2 text-sm font-medium transition-all duration-200 hover:border-purple-500/50 hover:bg-purple-500/5 hover:shadow-lg hover:shadow-purple-500/10"
+        >
+          <Mail className="size-4 text-purple-600 transition-transform group-hover:scale-110" />
+          <span>Send Email</span>
+        </a>
+
+        <a
+          href="https://github.com/aldinisma"
+          target="_blank"
+          class="group flex items-center gap-2 rounded-lg border border-border bg-background/50 px-4 py-2 text-sm font-medium transition-all duration-200 hover:border-pink-500/50 hover:bg-pink-500/5 hover:shadow-lg hover:shadow-pink-500/10"
+        >
+          <Github className="size-4 text-pink-600 transition-transform group-hover:scale-110" />
+          <span>GitHub</span>
+        </a>
       </div>
     </div>
   </div>
 </div>
 
-{
-  /* Callout badge
-<div
-  class="screen-line-after inline-flex w-full items-center gap-2 border-x bg-yellow-100 px-3 py-2 text-sm font-semibold dark:bg-yellow-500/10"
->
-  <span class="animate-bounce text-base">👋</span> I'm open to new opportunities
-  —
-  <a href={`mailto:${PROFILE_INFO.email}`} class="underline underline-offset-4">
-    get in touch
-  </a>
-</div>
- */
-}
+<style>
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-<Box>
-  <BoxContent className="space-y-3">
-    <span class="flex items-center justify-start gap-2">
-      <Briefcase className="size-4" />
-      <a
-        href="https://www.htlsaalfelden.at/startseite"
-        target="_blank"
-        class="underline underline-offset-4"
-      >
-        HTL Saalfelden
-      </a>
-      Student
-    </span>
+  @keyframes gradient-slow {
+    0%, 100% {
+      transform: rotate(0deg) scale(1);
+    }
+    50% {
+      transform: rotate(180deg) scale(1.1);
+    }
+  }
 
-    <span class="flex items-center justify-start gap-2">
-      <Briefcase className="size-4" />
-      Send me a
-      <a
-        href="mailto:ismaaldin@gmail.com"
-        target="_blank"
-        class="underline underline-offset-4"
-      >
-       mail
-      </a>
-    </span>
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
 
-    <span class="flex items-center justify-start gap-2">
-      <GithubIcon className="size-4" />
-      Check out my repos on
-      <a
-        href="https://github.com/aldinisma"
-        class="underline underline-offset-4"
-        target="_blank"
-      >
-        GitHub
-      </a>
-    </span>
-  </BoxContent>
-</Box>
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+    opacity: 0;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+    opacity: 0;
+  }
+
+  .animate-gradient-slow {
+    animation: gradient-slow 20s ease infinite;
+  }
+</style>

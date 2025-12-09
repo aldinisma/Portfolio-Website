@@ -6,16 +6,95 @@ import Box from "@/components/box/index.astro";
 import BoxHeader from "@/components/box/header.astro";
 import BoxTitle from "@/components/box/title.astro";
 import BoxContent from "@/components/box/content.astro";
+
+// Interessen/Hobbies mit Icons
+const interests = [
+  { icon: "⚽", label: "Football", color: "text-green-600" },
+  { icon: "🥊", label: "Boxing", color: "text-red-600" },
+  { icon: "🚗", label: "Cars", color: "text-blue-600" },
+  { icon: "💻", label: "Coding", color: "text-purple-600" },
+];
 ---
 
 <Box>
   <BoxHeader>
-    <BoxTitle> About </BoxTitle>
+    <BoxTitle>About</BoxTitle>
   </BoxHeader>
   <BoxContent>
-    <MarkdownRenderer
-      className="text-sm leading-7 font-medium"
-      content={PROFILE_INFO.about}
-    />
+    <div class="space-y-6">
+      <!-- Bio Text mit besserer Typography -->
+      <div class="prose prose-sm dark:prose-invert max-w-none">
+        <MarkdownRenderer
+          className="text-sm leading-relaxed text-foreground/90"
+          content={PROFILE_INFO.about}
+        />
+      </div>
+
+      <!-- Interests Section -->
+      <div class="space-y-3 pt-4 border-t border-border/50">
+        <h3 class="text-sm font-semibold text-muted-foreground">Interests & Hobbies</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {interests.map((interest, index) => (
+            <div 
+              class="group flex items-center gap-3 rounded-lg border border-border bg-gradient-to-br from-background to-muted/10 p-3 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              style={`animation-delay: ${index * 100}ms`}
+            >
+              <span class="text-2xl transition-transform duration-300 group-hover:scale-125">
+                {interest.icon}
+              </span>
+              <span class={`text-sm font-medium ${interest.color} group-hover:font-semibold transition-all`}>
+                {interest.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Fun Stats -->
+      <div class="grid grid-cols-3 gap-4 pt-4 border-t border-border/50">
+        <div class="text-center space-y-1 animate-fade-in">
+          <div class="text-2xl font-black text-blue-600">5+</div>
+          <div class="text-xs text-muted-foreground">Years of HTL</div>
+        </div>
+        <div class="text-center space-y-1 animate-fade-in animation-delay-100">
+          <div class="text-2xl font-black text-purple-600">10+</div>
+          <div class="text-xs text-muted-foreground">Technologies</div>
+        </div>
+        <div class="text-center space-y-1 animate-fade-in animation-delay-200">
+          <div class="text-2xl font-black text-pink-600">∞</div>
+          <div class="text-xs text-muted-foreground">Passion</div>
+        </div>
+      </div>
+    </div>
   </BoxContent>
 </Box>
+
+<style>
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 0.1s;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .group > div {
+    animation: fade-in 0.5s ease-out forwards;
+    opacity: 0;
+  }
+</style>
