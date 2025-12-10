@@ -5,58 +5,120 @@ import BoxTitle from "@/components/box/title.astro";
 import BoxContent from "@/components/box/content.astro";
 
 import { EXPERIENCES, EDUCATIONS } from "@/lib/constants/experience";
-import ExperienceItem from "./experience-item.astro";
+import { GraduationCap, Briefcase } from "lucide-react";
 ---
+
 <!-- EXPERIENCE SECTION -->
 <Box>
   <BoxHeader>
-    <BoxTitle> Experience </BoxTitle>
+    <BoxTitle>Experience</BoxTitle>
   </BoxHeader>
 
-  <BoxContent className="px-0">
-    {
-      EXPERIENCES.map(experience => (
-        <ExperienceItem experience={experience} />
-      ))
-    }
+  <BoxContent className="px-0 py-6">
+    <div class="relative px-6">
+      <!-- Vertical Timeline Line -->
+      <div class="absolute left-[2.15rem] top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500"></div>
+
+      <div class="space-y-8">
+        {EXPERIENCES.map((experience) => (
+          <div class="relative">
+            {experience.positions.map((position) => (
+              <div class="relative pl-12 pb-8 last:pb-0 group">
+                <!-- Timeline Dot with Icon -->
+                <div class="absolute left-0 flex items-center justify-center">
+                  <div class="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-4 border-background bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-blue-500/50">
+                    <Briefcase className="h-5 w-5 text-white" />
+                  </div>
+                </div>
+
+                <!-- Content Card -->
+                <div class="ml-2 transform transition-all duration-300 group-hover:translate-x-1">
+                  <div class="rounded-xl border border-border bg-gradient-to-br from-background to-muted/20 p-6 shadow-sm transition-all duration-300 group-hover:border-blue-500/50 group-hover:shadow-lg group-hover:shadow-blue-500/10">
+                    <!-- Header -->
+                    <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                      <div>
+                        <h3 class="text-xl font-black text-foreground">
+                          {position.title}
+                        </h3>
+                        <p class="text-base font-semibold text-muted-foreground">
+                          {experience.company}
+                        </p>
+                      </div>
+                      <span class="inline-flex items-center gap-2 rounded-full bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-600 dark:bg-blue-500/20 dark:text-blue-400 whitespace-nowrap">
+                        <svg class="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                        </svg>
+                        {position.year}
+                      </span>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="prose prose-sm dark:prose-invert max-w-none">
+                      <ul class="space-y-2 text-sm text-foreground/80">
+                        {position.description.split('\n').filter(line => line.trim().startsWith('♦')).map(line => {
+                          const content = line.replace(/^-?\s*♦\s*/, '').trim();
+                          return (
+                            <li class="flex items-start gap-2">
+                              <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-blue-500"></span>
+                              <span set:html={content} />
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
   </BoxContent>
 </Box>
 
 <!-- EDUCATION SECTION -->
 <Box class="mt-8">
   <BoxHeader>
-    <BoxTitle> Education </BoxTitle>
+    <BoxTitle>Education</BoxTitle>
   </BoxHeader>
 
-  <BoxContent className="px-0">
-    <div class="space-y-6 p-4">
+  <BoxContent className="px-0 py-6">
+    <div class="relative px-6">
+      <!-- Vertical Timeline Line -->
+      <div class="absolute left-[2.15rem] top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 via-pink-500 to-orange-500"></div>
 
-      {
-        EDUCATIONS.map(edu => (
-          <div class="space-y-2 not-last:border-b pb-4">
-
-            <!-- Title row with icon -->
-            <div class="flex items-center space-x-4 px-2">
-              <span class="size-2 rounded-full background-white"></span>
-
-              <h3 class="text-xl font-black">
-                {edu.institution}
-              </h3>
+      <div class="space-y-6">
+        {EDUCATIONS.map((edu) => (
+          <div class="relative pl-12 group">
+            <!-- Timeline Dot with Icon -->
+            <div class="absolute left-0 flex items-center justify-center">
+              <div class="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-4 border-background bg-gradient-to-br from-purple-500 to-pink-600 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-purple-500/50">
+                <GraduationCap className="h-5 w-5 text-white" />
+              </div>
             </div>
 
-            <!-- Year timeline -->
-            <div
-              class="relative pl-1 before:absolute before:left-3 before:h-full before:w-px before:bg-border"
-            >
-              <p class="text-sm px-6">
-                {edu.year}
-              </p>
+            <!-- Content Card -->
+            <div class="ml-2 transform transition-all duration-300 group-hover:translate-x-1">
+              <div class="rounded-xl border border-border bg-gradient-to-br from-background to-muted/20 p-6 shadow-sm transition-all duration-300 group-hover:border-purple-500/50 group-hover:shadow-lg group-hover:shadow-purple-500/10">
+                <div class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <h3 class="text-lg font-black text-foreground">
+                      {edu.institution}
+                    </h3>
+                  </div>
+                  <span class="inline-flex items-center gap-2 rounded-full bg-purple-500/10 px-3 py-1 text-xs font-semibold text-purple-600 dark:bg-purple-500/20 dark:text-purple-400 whitespace-nowrap">
+                    <svg class="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                    </svg>
+                    {edu.year}
+                  </span>
+                </div>
+              </div>
             </div>
-
           </div>
-        ))
-      }
-
+        ))}
+      </div>
     </div>
   </BoxContent>
 </Box>
