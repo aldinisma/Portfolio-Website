@@ -1,7 +1,8 @@
 export const PROFILE_INFO = {
   role: 'HTL Student',
   logo: 'Aldin.Isma',
-  slogan: "It always seems impossible until it's done. – Nelson Mandela",
+  slogan: "It always seems impossible until it's done.",
+  sloganAuthor: 'Nelson Mandela',
   displayName: "Aldin Isma",
   email: "ismaaldin@gmail.com",
   about: `

@@ -52,7 +52,7 @@ import VerifiedIcon from "@/components/ui/icons/verified.astro";
 
       <!-- Slogan -->
       <p class="max-w-2xl font-mono text-sm text-muted-foreground italic leading-relaxed">
-        "{PROFILE_INFO.slogan}"
+        "{PROFILE_INFO.slogan}"{PROFILE_INFO.sloganAuthor ? ` - ${PROFILE_INFO.sloganAuthor}` : ''}
       </p>
 
       <!-- Quick Links with Icons -->
