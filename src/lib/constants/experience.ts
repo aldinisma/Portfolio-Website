@@ -21,7 +21,7 @@ export const EXPERIENCES: Experience[] = [
     positions: [
       {
         title: "Minijob",
-        year: "10.2023 - 07.2025",
+        year: "10.2022 - 07.2025",
         description: `
 - ♦ Gained my **first work experience** and learned its values
 - ♦ Operated the cash register and processed payments accurately.
