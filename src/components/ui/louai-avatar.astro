@@ -11,22 +11,28 @@ interface Props {
 
 const {
   className,
-  size = 100, // Default size if not provided
+  size = 100,
   priority = false,
 } = Astro.props;
 
-// Determine image formats for fallback and webp
 const formats = ["avif", "webp"];
 ---
 
 <Picture
-  class:list={[className]}
+  class:list={[className, "avatar-image"]}
   src={ImgAvatar}
-  widths={[size, size * 2]}
-  sizes={`(max-width: ${size}px) 100vw, ${size}px`}
+  widths={[size * 2, size * 3]}
+  sizes={`${size}px`}
   formats={formats}
   alt={`${PROFILE_INFO.displayName}'s avatar`}
-  quality="mid"
+  quality="high"
   loading={priority ? "eager" : "lazy"}
   decoding="async"
 />
+
+<style>
+  .avatar-image img {
+    object-fit: cover;
+    object-position: center;
+  }
+</style>

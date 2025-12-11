@@ -1,7 +1,7 @@
 export const PROFILE_INFO = {
   role: 'HTL Student',
   logo: 'Aldin.Isma',
-  slogan: 'When I wrote this code, only God and I understood what I did. Now only God knows.',
+  slogan: "It always seems impossible until it's done. – Nelson Mandela",
   displayName: "Aldin Isma",
   email: "ismaaldin@gmail.com",
   about: `
